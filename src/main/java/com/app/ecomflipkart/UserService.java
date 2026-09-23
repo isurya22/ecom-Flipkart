@@ -1,11 +1,9 @@
 package com.app.ecomflipkart;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -16,13 +14,16 @@ public class UserService {
         return userList;
     }
 
-    public User getUser(Long id){
-        for(User user : userList){
+    public Optional<User> getUser(Long id){
+        /*
+          for(User user : userList){
             if (user.getId().equals(id)){
                 return user;
             }
         }
         return null;
+         */
+        return userList.stream().filter(user -> user.getId().equals(id)).findFirst();
     }
 
     public void addUser(User user){

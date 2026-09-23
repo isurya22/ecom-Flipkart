@@ -21,11 +21,15 @@ public class UserController {
 
     @GetMapping("/api/getUser/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
+        /*
         User user = userService.getUser(id);
         if(user == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(user);
+        */
+        return userService.getUser(id).map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping("/api/createUser")
