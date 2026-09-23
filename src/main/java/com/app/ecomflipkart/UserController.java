@@ -8,18 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/api/getListOfUsers")
+    @GetMapping("/getListOfUsers")
+    //@RequestMapping (value = "/getListOfUsers", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userService.fetchAllUsers(), HttpStatus.OK);
         //return ResponseEntity.ok(userService.fetchAllUsers());
     }
 
-    @GetMapping("/api/getUser/{id}")
+    @GetMapping("/getUser/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         /*
         User user = userService.getUser(id);
@@ -32,9 +34,13 @@ public class UserController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/api/createUser")
+    @PostMapping("/createUser")
     public ResponseEntity<String> createUser(@RequestBody User user){
         userService.addUser(user);
         return ResponseEntity.ok("User created Successfully");
+    }
+    @PutMapping("/updateUser/{id}")
+    public ResponseEntity<Boolean> updateUser(@PathVariable Long id, @RequestBody User updatedUser){
+        return new ResponseEntity<>(userService.updateUser(id, updatedUser), HttpStatus.OK);
     }
 }
