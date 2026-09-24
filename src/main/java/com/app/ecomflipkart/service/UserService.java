@@ -1,8 +1,10 @@
-package com.app.ecomflipkart;
+package com.app.ecomflipkart.service;
 
+import com.app.ecomflipkart.model.User;
+import com.app.ecomflipkart.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 

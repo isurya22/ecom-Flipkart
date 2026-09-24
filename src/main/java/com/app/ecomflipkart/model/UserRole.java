@@ -1,4 +1,4 @@
-package com.app.ecomflipkart;
+package com.app.ecomflipkart.model;
 
 public enum UserRole {
     CUSTOMER,

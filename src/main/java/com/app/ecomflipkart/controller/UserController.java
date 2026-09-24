@@ -1,5 +1,7 @@
-package com.app.ecomflipkart;
+package com.app.ecomflipkart.controller;
 
+import com.app.ecomflipkart.model.User;
+import com.app.ecomflipkart.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

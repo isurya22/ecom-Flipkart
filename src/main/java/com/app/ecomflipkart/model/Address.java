@@ -1,4 +1,4 @@
-package com.app.ecomflipkart;
+package com.app.ecomflipkart.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,15 +9,13 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@Entity(name = "user_table")
-//@AllArgsConstructor
-public class User {
+@Entity(name = "addresses")
+public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
-    private String email;
-    private UserRole role = UserRole.CUSTOMER;
+    private String street;
+    private String city;
+    private String state;
+    private String pinCode;
 }
