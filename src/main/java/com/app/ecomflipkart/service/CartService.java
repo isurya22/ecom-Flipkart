@@ -7,6 +7,7 @@ import com.app.ecomflipkart.model.User;
 import com.app.ecomflipkart.repository.CartItemRepository;
 import com.app.ecomflipkart.repository.ProductRepository;
 import com.app.ecomflipkart.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Transactional
 public class CartService {
 
     @Autowired
@@ -62,5 +64,16 @@ public class CartService {
            cartItemRepository.save(cartItem);
        }
        return true;
+    }
+
+    public boolean deleteItemFromCart(String userId, Long productId) {
+        Optional<Product> productOut = productRepository.findById(productId);
+        Optional<User> userOut = userRepository.findById(Long.valueOf(userId));
+
+        if(productOut.isPresent() && userOut.isPresent()){
+            cartItemRepository.deleteByUserAndProduct(userOut.get(), productOut.get());
+            return true;
+        }
+        return false;
     }
 }
