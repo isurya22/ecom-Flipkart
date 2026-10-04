@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.app</groupId>
-    <artifactId>ecom-Flipkart</artifactId>
+    <artifactId>ecom-flipkart</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ecom-Flipkart</name>
-    <description>ecom-Flipkart</description>
+    <name>ecom-flipkart</name>
+    <description>ecom-flipkart is application where I am learning ecommerce project.</description>
     <url/>
     <licenses>
         <license/>
